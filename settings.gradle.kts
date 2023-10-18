@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "FourAnimation"
 include(":app")
+include(":animation")
