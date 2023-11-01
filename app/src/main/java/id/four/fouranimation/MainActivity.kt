@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var flipHorizontal: FlipHorizontal
     lateinit var flipVertical: FlipVertical
 
-    var flipHorizontalPlay = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
