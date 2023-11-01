@@ -1,8 +1,5 @@
 package id.four.animation
 
-import android.animation.Animator
-import android.animation.AnimatorInflater
-import android.animation.AnimatorListenerAdapter
 import android.content.Context
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -10,11 +7,14 @@ import android.widget.ImageView
 
 class FlipHorizontal {
     var animation: Animation
+    var animationMirrored : Animation
     var context: Context
     var imageView: ImageView
     var imageResource: Int
     var imageResourceMirrored: Int
-    var isEnd : Boolean = true
+    var isEnd : Boolean = false
+
+    var isMirror = false
 
     constructor(
         context: Context,
@@ -28,30 +28,39 @@ class FlipHorizontal {
         this.imageResourceMirrored = imageResourceMirrored
 
         animation = AnimationUtils.loadAnimation(context, R.anim.flip_horizontal)
+        animationMirrored = AnimationUtils.loadAnimation(context, R.anim.flip_horizontal_mirrored)
 
-    }
-
-    fun start() {
-        isEnd = false
-        var isMirror = false
         animation.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(animation: Animation?) {
-                if (isMirror) {
-                    imageView.setImageResource(imageResourceMirrored)
-                } else {
+            override fun onAnimationStart(p0: Animation?) {
                     imageView.setImageResource(imageResource)
+            }
+
+            override fun onAnimationEnd(p0: Animation?) {
+                if(!isEnd){
+                    imageView.startAnimation(animationMirrored)
                 }
             }
 
-            override fun onAnimationEnd(animation: Animation?) {
+            override fun onAnimationRepeat(p0: Animation?) {}
+        })
+
+        animationMirrored.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(p0: Animation?) {
+                imageView.setImageResource(imageResourceMirrored)
+            }
+
+            override fun onAnimationEnd(p0: Animation?) {
                 if(!isEnd){
-                    isMirror = !isMirror
                     imageView.startAnimation(animation)
                 }
             }
 
-            override fun onAnimationRepeat(animation: Animation?) {}
+            override fun onAnimationRepeat(p0: Animation?) {}
         })
+
+    }
+
+    fun start() {
         imageView.startAnimation(animation)
     }
 
