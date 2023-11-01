@@ -111,8 +111,7 @@ class MainActivity : AppCompatActivity() {
                     flipHorizontal = FlipHorizontal(
                         context = this,
                         imageView = binding.imageView,
-                        imageResource = R.drawable.icon,
-                        imageResourceMirrored = R.drawable.icon_mirrored_horizontal
+                        imageResource = R.drawable.icon
                     )
                     flipHorizontal.start()
                 }

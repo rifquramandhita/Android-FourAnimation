@@ -11,29 +11,24 @@ class FlipHorizontal {
     var context: Context
     var imageView: ImageView
     var imageResource: Int
-    var imageResourceMirrored: Int
     var isEnd : Boolean = false
-
-    var isMirror = false
 
     constructor(
         context: Context,
         imageView: ImageView,
-        imageResource: Int,
-        imageResourceMirrored: Int
+        imageResource: Int
     ) {
         this.context = context
         this.imageView = imageView
         this.imageResource = imageResource
-        this.imageResourceMirrored = imageResourceMirrored
 
         animation = AnimationUtils.loadAnimation(context, R.anim.flip_horizontal)
         animationMirrored = AnimationUtils.loadAnimation(context, R.anim.flip_horizontal_mirrored)
 
+        imageView.setImageResource(imageResource)
+
         animation.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(p0: Animation?) {
-                    imageView.setImageResource(imageResource)
-            }
+            override fun onAnimationStart(p0: Animation?) {}
 
             override fun onAnimationEnd(p0: Animation?) {
                 if(!isEnd){
@@ -45,9 +40,7 @@ class FlipHorizontal {
         })
 
         animationMirrored.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(p0: Animation?) {
-                imageView.setImageResource(imageResourceMirrored)
-            }
+            override fun onAnimationStart(p0: Animation?) {}
 
             override fun onAnimationEnd(p0: Animation?) {
                 if(!isEnd){
