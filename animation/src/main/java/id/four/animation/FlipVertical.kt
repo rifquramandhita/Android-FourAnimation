@@ -1,17 +1,17 @@
 package id.four.animation
 
-import android.animation.Animator
-import android.animation.AnimatorInflater
-import android.animation.AnimatorListenerAdapter
 import android.content.Context
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 
 class FlipVertical {
-    var flipAnimator: Animator
+    var animation: Animation
     var context: Context
     var imageView: ImageView
     var imageResource: Int
     var imageResourceMirrored: Int
+    var isEnd = true
 
     constructor(
         context: Context,
@@ -24,36 +24,36 @@ class FlipVertical {
         this.imageResource = imageResource
         this.imageResourceMirrored = imageResourceMirrored
 
-        flipAnimator = AnimatorInflater.loadAnimator(context, R.animator.flip_vertical)
+        animation = AnimationUtils.loadAnimation(context, R.anim.flip_vertical)
 
     }
 
     fun start() {
+        isEnd = false
         var isMirror = false
-        flipAnimator.setTarget(imageView)
-        imageView.setImageResource(imageResource)
-        flipAnimator.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator) {
-                super.onAnimationEnd(animation)
-                isMirror = !isMirror
+        animation.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation?) {
                 if (isMirror) {
                     imageView.setImageResource(imageResourceMirrored)
                 } else {
                     imageView.setImageResource(imageResource)
                 }
-                flipAnimator.start()
             }
-        })
 
-        flipAnimator.start()
+            override fun onAnimationEnd(animation: Animation?) {
+                if(!isEnd){
+                    isMirror = !isMirror
+                    imageView.startAnimation(animation)
+                }
+            }
+
+            override fun onAnimationRepeat(animation: Animation?) {}
+        })
+        imageView.startAnimation(animation)
     }
 
     fun end() {
-        if (flipAnimator.isRunning) {
-            flipAnimator.cancel()
-        }
-
-        flipAnimator.removeAllListeners()
-        flipAnimator.setTarget(null)
+        isEnd = true
+        imageView.clearAnimation()
     }
 }
