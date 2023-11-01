@@ -3,9 +3,9 @@ package id.four.fouranimation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import id.four.animation.FlipHorizontal
 import id.four.animation.FlipVertical
+import id.four.animation.RotateClockWise
 import id.four.fouranimation.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var flipHorizontal: FlipHorizontal
     lateinit var flipVertical: FlipVertical
+    lateinit var rotateClockWise: RotateClockWise
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +37,10 @@ class MainActivity : AppCompatActivity() {
             viewModel.start(Animation.FLIP_VERTICAL)
         }
 
+        binding.rotateRightB.setOnClickListener {
+            viewModel.start(Animation.ROTATE_CLOCK_WISE)
+        }
+
         binding.pauseB.setOnClickListener {
             when(viewModel._isStart.value){
                 Animation.FLIP_HORIZONTAL ->{
@@ -43,6 +48,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 Animation.FLIP_VERTICAL ->{
                     flipVertical.end()
+                }
+                Animation.ROTATE_CLOCK_WISE->{
+                    rotateClockWise.end()
                 }
                 else ->{}
             }
@@ -73,6 +81,15 @@ class MainActivity : AppCompatActivity() {
                         imageResourceMirrored = R.mipmap.ic_launcher
                     )
                     flipVertical.start()
+                }
+                Animation.ROTATE_CLOCK_WISE->{
+                    showPauseButton()
+                    rotateClockWise = RotateClockWise(
+                        context = this@MainActivity,
+                        imageView = binding.imageView,
+                        imageResource = R.mipmap.ic_launcher
+                    )
+                    rotateClockWise.start()
                 }
                 Animation.PAUSE -> {
                     showPlayButton()
