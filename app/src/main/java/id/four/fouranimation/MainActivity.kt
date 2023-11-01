@@ -122,8 +122,7 @@ class MainActivity : AppCompatActivity() {
                     flipVertical = FlipVertical(
                         context = this,
                         imageView = binding.imageView,
-                        imageResource = R.drawable.icon,
-                        imageResourceMirrored = R.drawable.icon_mirrored_vertical
+                        imageResource = R.drawable.icon
                     )
                     flipVertical.start()
                 }
