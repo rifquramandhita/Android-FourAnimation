@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             viewModel.start(Animation.FLIP_VERTICAL)
         }
 
-        binding.rotateRightB.setOnClickListener {
+        binding.rotateClockWiseB.setOnClickListener {
             viewModel.start(Animation.ROTATE_CLOCK_WISE)
         }
 
