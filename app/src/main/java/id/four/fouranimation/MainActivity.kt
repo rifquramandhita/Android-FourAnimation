@@ -111,8 +111,8 @@ class MainActivity : AppCompatActivity() {
                     flipHorizontal = FlipHorizontal(
                         context = this,
                         imageView = binding.imageView,
-                        imageResource = R.mipmap.ic_launcher,
-                        imageResourceMirrored = R.mipmap.ic_launcher
+                        imageResource = R.drawable.icon,
+                        imageResourceMirrored = R.drawable.icon_mirrored_horizontal
                     )
                     flipHorizontal.start()
                 }
@@ -122,8 +122,8 @@ class MainActivity : AppCompatActivity() {
                     flipVertical = FlipVertical(
                         context = this,
                         imageView = binding.imageView,
-                        imageResource = R.mipmap.ic_launcher,
-                        imageResourceMirrored = R.mipmap.ic_launcher
+                        imageResource = R.drawable.icon,
+                        imageResourceMirrored = R.drawable.icon_mirrored_vertical
                     )
                     flipVertical.start()
                 }
@@ -132,7 +132,7 @@ class MainActivity : AppCompatActivity() {
                     rotateClockWise = RotateClockWise(
                         context = this@MainActivity,
                         imageView = binding.imageView,
-                        imageResource = R.mipmap.ic_launcher
+                        imageResource = R.drawable.icon
                     )
                     rotateClockWise.start()
                 }
@@ -141,7 +141,7 @@ class MainActivity : AppCompatActivity() {
                     rotateAntiClockWise = RotateAntiClockWise(
                         context = this@MainActivity,
                         imageView = binding.imageView,
-                        imageResource = R.mipmap.ic_launcher
+                        imageResource = R.drawable.icon
                     )
                     rotateAntiClockWise.start()
                 }
@@ -150,7 +150,7 @@ class MainActivity : AppCompatActivity() {
                     fadeIn = FadeIn(
                         context = this@MainActivity,
                         imageView = binding.imageView,
-                        imageResource = R.mipmap.ic_launcher
+                        imageResource = R.drawable.icon
                     )
                     fadeIn.start()
                 }
@@ -159,7 +159,7 @@ class MainActivity : AppCompatActivity() {
                     fadeOut = FadeOut(
                         context = this@MainActivity,
                         imageView = binding.imageView,
-                        imageResource = R.mipmap.ic_launcher
+                        imageResource = R.drawable.icon
                     )
                     fadeOut.start()
                 }
@@ -168,7 +168,7 @@ class MainActivity : AppCompatActivity() {
                     zoomIn = ZoomIn(
                         context = this@MainActivity,
                         imageView = binding.imageView,
-                        imageResource = R.mipmap.ic_launcher
+                        imageResource = R.drawable.icon
                     )
                     zoomIn.start()
                 }
@@ -177,7 +177,7 @@ class MainActivity : AppCompatActivity() {
                     zoomOut = ZoomOut(
                         context = this@MainActivity,
                         imageView = binding.imageView,
-                        imageResource = R.mipmap.ic_launcher
+                        imageResource = R.drawable.icon
                     )
                     zoomOut.start()
                 }
