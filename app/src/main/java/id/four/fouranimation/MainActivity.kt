@@ -3,6 +3,7 @@ package id.four.fouranimation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import id.four.animation.FadeIn
 import id.four.animation.FlipHorizontal
 import id.four.animation.FlipVertical
 import id.four.animation.RotateAntiClockWise
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var flipVertical: FlipVertical
     lateinit var rotateClockWise: RotateClockWise
     lateinit var rotateAntiClockWise: RotateAntiClockWise
+    lateinit var fadeIn: FadeIn
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +49,10 @@ class MainActivity : AppCompatActivity() {
             viewModel.start(Animation.ROTATE_ANTI_CLOCK_WISE)
         }
 
+        binding.fadeInB.setOnClickListener {
+            viewModel.start(Animation.FADE_IN)
+        }
+
         binding.pauseB.setOnClickListener {
             when(viewModel._isStart.value){
                 Animation.FLIP_HORIZONTAL ->{
@@ -60,6 +66,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 Animation.ROTATE_ANTI_CLOCK_WISE->{
                     rotateAntiClockWise.end()
+                }
+                Animation.FADE_IN-> {
+                    fadeIn.end()
                 }
                 else ->{}
             }
@@ -108,6 +117,15 @@ class MainActivity : AppCompatActivity() {
                         imageResource = R.mipmap.ic_launcher
                     )
                     rotateAntiClockWise.start()
+                }
+                Animation.FADE_IN -> {
+                    showPauseButton()
+                    fadeIn = FadeIn(
+                        context = this@MainActivity,
+                        imageView = binding.imageView,
+                        imageResource = R.mipmap.ic_launcher
+                    )
+                    fadeIn.start()
                 }
                 Animation.PAUSE -> {
                     showPlayButton()
