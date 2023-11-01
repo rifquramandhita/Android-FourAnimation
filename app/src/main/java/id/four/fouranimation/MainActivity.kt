@@ -10,6 +10,7 @@ import id.four.animation.FlipVertical
 import id.four.animation.RotateAntiClockWise
 import id.four.animation.RotateClockWise
 import id.four.animation.ZoomIn
+import id.four.animation.ZoomOut
 import id.four.fouranimation.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var fadeIn: FadeIn
     lateinit var fadeOut: FadeOut
     lateinit var zoomIn: ZoomIn
+    lateinit var zoomOut : ZoomOut
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +67,10 @@ class MainActivity : AppCompatActivity() {
             viewModel.start(Animation.ZOOM_IN)
         }
 
+        binding.zoomOutB.setOnClickListener {
+            viewModel.start(Animation.ZOOM_OUT)
+        }
+
         binding.pauseB.setOnClickListener {
             when(viewModel._isStart.value){
                 Animation.FLIP_HORIZONTAL ->{
@@ -87,6 +93,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 Animation.ZOOM_IN->{
                     zoomIn.end()
+                }
+                Animation.ZOOM_OUT->{
+                    zoomOut.end()
                 }
                 else ->{}
             }
@@ -162,6 +171,15 @@ class MainActivity : AppCompatActivity() {
                         imageResource = R.mipmap.ic_launcher
                     )
                     zoomIn.start()
+                }
+                Animation.ZOOM_OUT->{
+                    showPauseButton()
+                    zoomOut = ZoomOut(
+                        context = this@MainActivity,
+                        imageView = binding.imageView,
+                        imageResource = R.mipmap.ic_launcher
+                    )
+                    zoomOut.start()
                 }
                 Animation.PAUSE -> {
                     showPlayButton()

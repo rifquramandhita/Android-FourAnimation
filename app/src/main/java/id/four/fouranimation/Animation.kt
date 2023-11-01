@@ -8,5 +8,6 @@ enum class Animation {
     ROTATE_ANTI_CLOCK_WISE,
     FADE_IN,
     FADE_OUT,
-    ZOOM_IN
+    ZOOM_IN,
+    ZOOM_OUT
 }
