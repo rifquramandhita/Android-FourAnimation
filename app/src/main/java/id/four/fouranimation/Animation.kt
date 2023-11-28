@@ -9,5 +9,6 @@ enum class Animation {
     FADE_IN,
     FADE_OUT,
     ZOOM_IN,
-    ZOOM_OUT
+    ZOOM_OUT,
+    MOVE_RIGHT_OUT
 }
