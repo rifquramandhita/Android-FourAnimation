@@ -7,6 +7,7 @@ import id.four.animation.FadeIn
 import id.four.animation.FadeOut
 import id.four.animation.FlipHorizontal
 import id.four.animation.FlipVertical
+import id.four.animation.MoveRightIn
 import id.four.animation.MoveRightOut
 import id.four.animation.RotateAntiClockWise
 import id.four.animation.RotateClockWise
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var fadeOut: FadeOut
     lateinit var zoomIn: ZoomIn
     lateinit var zoomOut : ZoomOut
+    lateinit var moveRightIn : MoveRightIn
     lateinit var moveRightOut : MoveRightOut
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,6 +74,9 @@ class MainActivity : AppCompatActivity() {
         binding.zoomOutB.setOnClickListener {
             viewModel.start(Animation.ZOOM_OUT)
         }
+        binding.moveRightInB.setOnClickListener {
+            viewModel.start(Animation.MOVE_RIGHT_IN)
+        }
         binding.moveRightOutB.setOnClickListener {
             viewModel.start(Animation.MOVE_RIGHT_OUT)
         }
@@ -101,6 +106,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 Animation.ZOOM_OUT->{
                     zoomOut.end()
+                }
+                Animation.MOVE_RIGHT_IN->{
+                    moveRightIn.end()
                 }
                 Animation.MOVE_RIGHT_OUT->{
                     moveRightOut.end()
@@ -186,6 +194,15 @@ class MainActivity : AppCompatActivity() {
                         imageResource = R.drawable.icon
                     )
                     zoomOut.start()
+                }
+                Animation.MOVE_RIGHT_IN->{
+                    showPauseButton()
+                    moveRightIn = MoveRightIn(
+                        context = this@MainActivity,
+                        imageView = binding.imageView,
+                        imageResource = R.drawable.icon
+                    )
+                    moveRightIn.start()
                 }
                 Animation.MOVE_RIGHT_OUT->{
                     showPauseButton()

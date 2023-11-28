@@ -103,14 +103,23 @@
             app:layout_constraintStart_toEndOf="@+id/zoomIn_b"
             app:layout_constraintTop_toBottomOf="@+id/fadeOut_b" />
         <Button
+            android:id="@+id/moveRightIn_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Move Right In"
+            app:layout_constraintEnd_toStartOf="@+id/moveRightOut_b"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/zoomIn_b" />
+        <Button
             android:id="@+id/moveRightOut_b"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="Move Right Out"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/zoomIn_b" />
+            app:layout_constraintStart_toEndOf="@+id/moveRightIn_b"
+            app:layout_constraintTop_toBottomOf="@+id/zoomOut_b" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
