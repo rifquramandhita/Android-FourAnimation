@@ -23,7 +23,7 @@ class MoveLeftIn {
 
         animation = AnimationUtils.loadAnimation(
             context,
-            R.anim.move_right_in
+            R.anim.move_left_in
         )
         imageView.setImageResource(imageResource)
     }
