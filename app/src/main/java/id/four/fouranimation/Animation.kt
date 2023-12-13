@@ -11,5 +11,6 @@ enum class Animation {
     ZOOM_IN,
     ZOOM_OUT,
     MOVE_RIGHT_IN,
-    MOVE_RIGHT_OUT
+    MOVE_RIGHT_OUT,
+    MOVE_LEFT_IN
 }
