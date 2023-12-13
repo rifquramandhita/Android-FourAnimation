@@ -8,6 +8,7 @@ import id.four.animation.FadeOut
 import id.four.animation.FlipHorizontal
 import id.four.animation.FlipVertical
 import id.four.animation.MoveLeftIn
+import id.four.animation.MoveLeftOut
 import id.four.animation.MoveRightIn
 import id.four.animation.MoveRightOut
 import id.four.animation.RotateAntiClockWise
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var moveRightIn : MoveRightIn
     lateinit var moveRightOut : MoveRightOut
     lateinit var moveLeftIn : MoveLeftIn
+    lateinit var moveLeftOut : MoveLeftOut
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,6 +88,10 @@ class MainActivity : AppCompatActivity() {
             viewModel.start(Animation.MOVE_LEFT_IN)
         }
 
+        binding.moveLeftOutB.setOnClickListener {
+            viewModel.start(Animation.MOVE_LEFT_OUT)
+        }
+
         binding.pauseB.setOnClickListener {
             when(viewModel._isStart.value){
                 Animation.FLIP_HORIZONTAL ->{
@@ -120,6 +126,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 Animation.MOVE_LEFT_IN->{
                     moveLeftIn.end()
+                }
+                Animation.MOVE_LEFT_OUT->{
+                    moveLeftOut.end()
                 }
                 else ->{}
             }
@@ -229,6 +238,15 @@ class MainActivity : AppCompatActivity() {
                         imageResource = R.drawable.icon
                     )
                     moveLeftIn.start()
+                }
+                Animation.MOVE_LEFT_OUT->{
+                    showPauseButton()
+                    moveLeftOut = MoveLeftOut(
+                        context = this@MainActivity,
+                        imageView = binding.imageView,
+                        imageResource = R.drawable.icon
+                    )
+                    moveLeftOut.start()
                 }
                 Animation.PAUSE -> {
                     showPlayButton()

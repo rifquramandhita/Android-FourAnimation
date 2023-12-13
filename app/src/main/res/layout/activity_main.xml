@@ -126,9 +126,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="Move Left In"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/moveLeftOut_b"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/moveRightIn_b" />
+        <Button
+            android:id="@+id/moveLeftOut_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Move Left Out"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/moveLeftIn_b"
+            app:layout_constraintTop_toBottomOf="@+id/moveRightOut_b" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
